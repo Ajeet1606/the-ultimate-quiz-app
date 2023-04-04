@@ -4,7 +4,7 @@ import { database } from "./firebase";
 
 const QuestionForm = (props) => {
 
-  const {setquizcreated} = props;
+  const { setquizcreated } = props;
   const [pushedIntoArray, setpushedIntoArray] = useState(false);
 
   const initialQuestion = [
@@ -41,7 +41,7 @@ const QuestionForm = (props) => {
     return questions[questionIndex].answerOptions.map((answerOption, index) => (
       <div className="answer-section-input">
         <div key={index} className="every-answer-block-input">
-        <input
+          <input
             type="checkbox"
             name="isCorrect"
             checked={answerOption.isCorrect}
@@ -52,8 +52,9 @@ const QuestionForm = (props) => {
             name="option"
             value={answerOption.option}
             onChange={(e) => handleAnswerOptionChange(e, questionIndex, index)}
+            required aria-required="true" 
           />
-          
+
         </div>
       </div>
     ));
@@ -71,8 +72,9 @@ const QuestionForm = (props) => {
             name="questionText"
             value={question.questionText}
             onChange={(e) => handleQuestionChange(e, index)}
+            required aria-required="true" 
           />
-          
+
         </div>
       </div>
     ));
@@ -81,12 +83,12 @@ const QuestionForm = (props) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if(pushedIntoArray === false){
+    if (pushedIntoArray === false) {
       my_arr.push(questions[0]);
     }
     console.log(my_arr);
     setQuestions(initialQuestion);
-   
+
 
     //firebase connection
     const databaseRef = database.ref("questions");
@@ -118,8 +120,11 @@ const QuestionForm = (props) => {
       <form onSubmit={handleSubmit}>
         {renderQuestions()}
         {renderAnswerOptions(0)}
-        <button type="button" onClick={handleAddQuestion}>Next</button>
-        <button type="submit">Submit</button>
+        <div className="btn-input">
+          <button type="button" onClick={handleAddQuestion}>Next</button>
+          <button type="submit">Submit</button>
+        </div>
+
       </form>
 
     </div>
