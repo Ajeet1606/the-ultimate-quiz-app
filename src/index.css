@@ -67,6 +67,11 @@ body {
   margin-bottom: 12px;
 }
 
+
+.check{
+  margin-right: 20px;
+}
+
 .timer-text {
   background: rgb(230, 153, 12);
   padding: 15px;
@@ -141,7 +146,12 @@ button svg {
   margin-right: 5px;
 }
 
-.question-text-input > input, .every-answer-block-input > input{
+.every-answer-block-input > input[type='checkbox']{
+  width: 21px;
+  margin-right: 6px;
+}
+
+.question-text-input > input, .every-answer-block-input > input[type='text']{
   height: 28px;
   width: 250px;
   margin-bottom: 5px;

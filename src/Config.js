@@ -1,5 +1,4 @@
-const questions = [
-  
-];
+const my_array = [];
 
-export default questions;
+export default my_array;
+

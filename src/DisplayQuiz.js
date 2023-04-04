@@ -1,15 +1,15 @@
 import React from "react";
-import questions from "./Config";
+import my_array from "./Config";
 
 function DisplayQuiz(props) {
 
   const {currentquestion, setcurrentquestion, setquizcompleted, score, setscore} = props;
 
-  const handleAnswerButtonClick = () => {
-   
+  const handleAnswerButtonClick = (isCorrect) => {
+    if(isCorrect === true)
       setscore(score + 1);
     
-    if (currentquestion + 1 < questions.length) {
+    if (currentquestion + 1 < my_array.length) {
       setcurrentquestion(currentquestion + 1);
     } else {
         setquizcompleted(true);
@@ -20,31 +20,26 @@ function DisplayQuiz(props) {
   <>
     <div className="question-section">
             <div className="question-count">
-              <span>{currentquestion + 1}</span>/{questions.length}
+              <span>{currentquestion + 1}</span>/{my_array.length}
             </div>
             <div className="question-text">
-              {questions[currentquestion]?.QuestionText}
+              {my_array[currentquestion]?.questionText}
             </div>
           </div>
+
+          
           <div className="answer-section">
-              <button
-              onClick={() => {
-                handleAnswerButtonClick();
-              }}
-              >{questions[currentquestion].option1}</button>
-              <button>{questions[currentquestion].option2}</button>
-              <button>{questions[currentquestion].option3}</button>
-              <button>{questions[currentquestion].option4}</button>
-            {/* {questions[currentquestion].answerOptions.map((answerOption) => (
-              <button
+          {my_array[currentquestion].answerOptions.map((answerOption, index) => (
+              <button key={index}
                 onClick={() => {
                   handleAnswerButtonClick(answerOption.isCorrect);
                 }}
               >
-                {answerOption.answerText}
+                {answerOption.option}
               </button>
-            ))} */}
-          </div>
+              ))} 
+            </div>
+
   </>
   );
 }
