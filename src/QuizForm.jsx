@@ -4,7 +4,7 @@ import { database } from "./firebase";
 
 const QuestionForm = (props) => {
 
-  const {quizCreated, setquizcreated} = props;
+  const {setquizcreated} = props;
   const [pushedIntoArray, setpushedIntoArray] = useState(false);
 
   const initialQuestion = [

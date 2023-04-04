@@ -7,16 +7,7 @@ function CreateQuiz() {
 
   // state variables
   const [quizcreated, setquizcreated] = useState(false);
-  
-  
-  // Called on form submission
-  const handleSubmit = async (event) => {
-    event.preventDefault();
 
-    
-
-    setquizcreated(true);
-  };
 
   return (
     <>
@@ -26,7 +17,7 @@ function CreateQuiz() {
         </>
       ) : (
         <>
-        <QuestionForm quizcreated= {quizcreated} setquizcreated = {setquizcreated}/>
+        <QuestionForm setquizcreated = {setquizcreated}/>
           
         </>
       )}
